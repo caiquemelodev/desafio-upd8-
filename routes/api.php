@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\RepresentanteController;
+
+Route::apiResource('clientes', ClienteController::class);
+Route::apiResource('cidades', CidadeController::class)->only(['index']);
+Route::apiResource('representantes', RepresentanteController::class);
